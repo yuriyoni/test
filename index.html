@@ -12,16 +12,17 @@
    #verti1 {display: block; float: left; width: 1; background-color: black; height: 100%; }  
 </style>
 
-<head></head>
+<head>ï»¿<meta charset="utf-8">
+</head>
 <body>
     <script language="JavaScript">
-        var bb = [["È¥´Ù", "´ëÁ·Àå", "8"], ["Ãà½Å", "Æ¼¿¡ÀÌÅ©", "8"], ["¸í°è", "µ¥½ºÆ¼¾Æ", "8"]
-             ,["Æè¹Ù","Ä¯¹ÙÄí","Æè","9"],["¹ì","“ƒ","9"],["ÀÌÁ¦¶ó","¼¼³×Ä«","9"],["¿ç·Î¸£","¿ç·Î","¿ç·á¸£","9"]
-            , ["¿ì±×ÀÚ", "±×·¹¸®ÇÁ", "±×·¹", "8"]
-            ,["¶ó±×¶ô","È÷¹ÙÄ«", "9"],["¾Æ½ºÅ¸¶ó","¾Æ½º","µ¥ÀÌ°ÔÅ¸","9"]
-              ,["¸¶´©±Û","¼Ò","¸¶´©±¼","9"],["ÇÏ½´Ä®","¹«¸£ÇÏÅ©","ÇÏ½´","9"]
-            ,["Çì¶óÁî","Æ÷º´","12"],["Åõ±×¸¯","°ø¼ºÃß","12"],["¾Æ¸£³Å","¹ý»ç","12"]
-            ,["ÀÙ»õ","24"]
+        var bb = [["í˜¼ë‹¤", "ëŒ€ì¡±ìž¥", "8"], ["ì¶•ì‹ ", "í‹°ì—ì´í¬", "8"], ["ëª…ê³„", "ë°ìŠ¤í‹°ì•„", "8"]
+             ,["íŽ¨ë°”","ìº„ë°”ì¿ ","íŽ¨","9"],["ë±€","Â“Âƒ","9"],["ì´ì œë¼","ì„¸ë„¤ì¹´","9"],["ìšœë¡œë¥´","ìšœë¡œ","ìšœë£Œë¥´","9"]
+            , ["ìš°ê·¸ìž", "ê·¸ë ˆë¦¬í”„", "ê·¸ë ˆ", "8"]
+            ,["ë¼ê·¸ë½","ížˆë°”ì¹´", "9"],["ì•„ìŠ¤íƒ€ë¼","ì•„ìŠ¤","ë°ì´ê²Œíƒ€","9"]
+              ,["ë§ˆëˆ„ê¸€","ì†Œ","ë§ˆëˆ„êµ´","9"],["í•˜ìŠˆì¹¼","ë¬´ë¥´í•˜í¬","í•˜ìŠˆ","9"]
+            ,["í—¤ë¼ì¦ˆ","í¬ë³‘","12"],["íˆ¬ê·¸ë¦­","ê³µì„±ì¶”","12"],["ì•„ë¥´ëƒ‘","ë²•ì‚¬","12"]
+            ,["ìžŽìƒˆ","24"]
         ]; 
 
         var dd = new Date();
@@ -35,8 +36,8 @@
             var arr = str.split('\n');
             var strList = getStrList(arr, bb);
 
-            var hhtt = "<div class='row'><span class='cell col1'>º¸½º</span><span class='cell col2'>Ã¤³Î</span><span class='cell col3'>ÀâÀº½Ã°£</span><span class='cell col4'>¿¹»ó½Ã°£</span></div>";            
-            var queList = "<div class='row'><span class='cell col1'>º¸½º(½Ã°£¸ð¸§)</span><span class='cell col2'>Ã¤³Î</span></div>";            
+            var hhtt = "<div class='row'><span class='cell col1'>ë³´ìŠ¤</span><span class='cell col2'>ì±„ë„</span><span class='cell col3'>ìž¡ì€ì‹œê°„</span><span class='cell col4'>ì˜ˆìƒì‹œê°„</span></div>";            
+            var queList = "<div class='row'><span class='cell col1'>ë³´ìŠ¤(ì‹œê°„ëª¨ë¦„)</span><span class='cell col2'>ì±„ë„</span></div>";            
             tobeList = getTobeList(strList, bb, chCnt);
             tobeList.sort(date_asc);
             
@@ -306,11 +307,11 @@
 
                     if (str1.includes(":")) {
 
-                        if (str1.includes("¿À´Ã")) {
+                        if (str1.includes("ì˜¤ëŠ˜")) {
 
                             return false;
 
-                        } else if (str1.includes("¾îÁ¦")) {
+                        } else if (str1.includes("ì–´ì œ")) {
 
                             return false;
 
@@ -360,114 +361,114 @@
 
 
 
-        Æè¹Ù1 14:48
+        íŽ¨ë°”1 14:48
 
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 2:57
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 2:57
 
-        È¥´Ù2 14:57
+        í˜¼ë‹¤2 14:57
 
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 3:06
-
-        
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 3:13
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 3:06
 
         
 
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 3:29
-
-        ¹ì1 15:29
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 3:43
-
-        ±×·¹1 15:43
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 3:57
-
-        ¿ç·Î2 15:57
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 4:23
-
-        ÇÏ½´1 16:23
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 4:51
-
-        ÀÌÁ¦¶ó2 16:51
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 5:19
-
-        ¶ó±×¶ô2 17:19
-
-        ·ç¸®¿µ  ¿À´Ã ¿ÀÈÄ 5:50
-
-        ¸í°è1 17:45
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 6:19
-
-        ¿ç·Î1 18:19
-
-        ¿Í¸Å¼±/35  ¿À´Ã ¿ÀÈÄ 6:39
-
-        ¸í°è2 18:39
-
-        ÀÌÇÏ¿©¹é / 54  ¿À´Ã ¿ÀÈÄ 6:57
-
-        ´ÙÀ½º¸½º Á¨ ¿¹»ó½Ã°£
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 3:13
 
         
 
-        ·ç¸®¿µ  ¿À´Ã ¿ÀÈÄ 8:52
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 3:29
 
-        ¾Æ½º 1Ã¤ 20:52
+        ë±€1 15:29
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 3:43
+
+        ê·¸ë ˆ1 15:43
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 3:57
+
+        ìšœë¡œ2 15:57
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 4:23
+
+        í•˜ìŠˆ1 16:23
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 4:51
+
+        ì´ì œë¼2 16:51
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 5:19
+
+        ë¼ê·¸ë½2 17:19
+
+        ë£¨ë¦¬ì˜  ì˜¤ëŠ˜ ì˜¤í›„ 5:50
+
+        ëª…ê³„1 17:45
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 6:19
+
+        ìšœë¡œ1 18:19
+
+        ì™€ë§¤ì„ /35  ì˜¤ëŠ˜ ì˜¤í›„ 6:39
+
+        ëª…ê³„2 18:39
+
+        ì´í•˜ì—¬ë°± / 54  ì˜¤ëŠ˜ ì˜¤í›„ 6:57
+
+        ë‹¤ìŒë³´ìŠ¤ ì   ì˜ˆìƒì‹œê°„
+
+        
+
+        ë£¨ë¦¬ì˜  ì˜¤ëŠ˜ ì˜¤í›„ 8:52
+
+        ì•„ìŠ¤ 1ì±„ 20:52
 
         MEE6
 
-        º¿
+        ë´‡
 
-          ¿À´Ã ¿ÀÈÄ 8:52
+          ì˜¤ëŠ˜ ì˜¤í›„ 8:52
 
-        GG @·ç¸®¿µ, you just advanced to level 5!
+        GG @ë£¨ë¦¬ì˜, you just advanced to level 5!
 
-        Çýºó29  ¿À´Ã ¿ÀÈÄ 8:57
+        í˜œë¹ˆ29  ì˜¤ëŠ˜ ì˜¤í›„ 8:57
 
-        ¸¶´©±Û1 20:57
+        ë§ˆëˆ„ê¸€1 20:57
 
         MEE6
 
-        º¿
+        ë´‡
 
-          ¿À´Ã ¿ÀÈÄ 8:57
+          ì˜¤ëŠ˜ ì˜¤í›„ 8:57
 
-        GG @Çýºó29, you just advanced to level 5!
+        GG @í˜œë¹ˆ29, you just advanced to level 5!
 
-        ·ç¸®¿µ  ¿À´Ã ¿ÀÈÄ 8:58
+        ë£¨ë¦¬ì˜  ì˜¤ëŠ˜ ì˜¤í›„ 8:58
 
-        ¾Æ½º2Ã¤ 21:10 ¿¹»ó
+        ì•„ìŠ¤2ì±„ 21:10 ì˜ˆìƒ
 
-        ·ç¸®¿µ  ¿À´Ã ¿ÀÈÄ 9:17
+        ë£¨ë¦¬ì˜  ì˜¤ëŠ˜ ì˜¤í›„ 9:17
 
-        °ø¼ºÃß 1Ã¤ 21:16
+        ê³µì„±ì¶” 1ì±„ 21:16
 
-        ÀÌÇÏ¿©¹é / 54  ¿À´Ã ¿ÀÈÄ 10:37
+        ì´í•˜ì—¬ë°± / 54  ì˜¤ëŠ˜ ì˜¤í›„ 10:37
 
-        ¶ó±×¶ô 1 22:36
-
-        
-
-        Ãà½Å 2 23:19
-
-        È¥´Ù 1 23:24
-
-        Ãà½Å1 23:31
-
-        ±×·¹ 2 23:38
+        ë¼ê·¸ë½ 1 22:36
 
         
 
-        ¹ì 2 23:46
+        ì¶•ì‹  2 23:19
+
+        í˜¼ë‹¤ 1 23:24
+
+        ì¶•ì‹ 1 23:31
+
+        ê·¸ë ˆ 2 23:38
+
+        
+
+        ë±€ 2 23:46
 
     </textarea>
-    <p><button name="bu1" onclick="run1()">click</button><a>    * °°ÀºÃ¤³Î°°Àºº¸½º°¡ ½áÀÖÀ¸¸é ¹Ø¿¡ ½áÀÖ´Â°ÇÀ¸·Î »ç¿ëÇÔ(µðÄÚ¿¡¼­ ½Ï µå·¡±×·Î ±Ü¾î¼­ Ä«ÇÇÈÄ ºÙ¿©³Ö±â)</a></p>
+    <p><button name="bu1" onclick="run1()">click</button><a>    * ê°™ì€ì±„ë„ê°™ì€ë³´ìŠ¤ê°€ ì¨ìžˆìœ¼ë©´ ë°‘ì— ì¨ìžˆëŠ”ê±´ìœ¼ë¡œ ì‚¬ìš©í•¨(ë””ì½”ì—ì„œ ì‹¹ ë“œëž˜ê·¸ë¡œ ê¸ì–´ì„œ ì¹´í”¼í›„ ë¶™ì—¬ë„£ê¸°)</a></p>
     <hr>
 
     <div id = "paren">
