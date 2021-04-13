@@ -1,0 +1,487 @@
+<html>
+<style>
+   #table {display: table; float: left; width: 400;} 
+.row {display: table-row;}
+.cell {display: table-cell; padding: 3px; border-bottom: 1px solid #DDD;} 
+.col1 { width: 20%;} 
+.col2 {width: 20%;} 
+.col3 {width: 40%;}
+ .col4 {width: 20%;}
+   #paren {display: block; width: 655;} 
+   #que {display: block; float: left; width: 250;}  
+   #verti1 {display: block; float: left; width: 1; background-color: black; height: 100%; }  
+</style>
+
+<head></head>
+<body>
+    <script language="JavaScript">
+        var bb = [["혼다", "대족장", "8"], ["축신", "티에이크", "8"], ["명계", "데스티아", "8"]
+             ,["펨바","캄바쿠","펨","9"],["뱀","뱜","9"],["이제라","세네카","9"],["욜로르","욜로","욜료르","9"]
+            , ["우그자", "그레리프", "그레", "8"]
+            ,["라그락","히바카", "9"],["아스타라","아스","데이게타","9"]
+              ,["마누글","소","마누굴","9"],["하슈칼","무르하크","하슈","9"]
+            ,["헤라즈","포병","12"],["투그릭","공성추","12"],["아르냑","법사","12"]
+            ,["잎새","24"]
+        ]; 
+
+        var dd = new Date();
+        var chCnt = 2;
+        var rStr = [];
+        var tobeList = [];
+        var queLists = [];
+        
+        function run1() {
+            var str = document.getElementById("ta1").value;
+            var arr = str.split('\n');
+            var strList = getStrList(arr, bb);
+
+            var hhtt = "<div class='row'><span class='cell col1'>보스</span><span class='cell col2'>채널</span><span class='cell col3'>잡은시간</span><span class='cell col4'>예상시간</span></div>";            
+            var queList = "<div class='row'><span class='cell col1'>보스(시간모름)</span><span class='cell col2'>채널</span></div>";            
+            tobeList = getTobeList(strList, bb, chCnt);
+            tobeList.sort(date_asc);
+            
+            queLists = getQueLists( bb,tobeList,chCnt);
+           
+            for (var i = 0; i < tobeList.length; i++) {
+              
+                hhtt = hhtt + "<div class='row'>    ";
+                hhtt = hhtt + "<span class='cell col1'>" + tobeList[i][0] +   "</span>"
+                hhtt = hhtt + "<span class='cell col2'>" + tobeList[i][1] +   "</span>"
+                hhtt = hhtt + "<span class='cell col3'>" + tobeList[i][2] +   "</span>"
+                hhtt = hhtt + "<span class='cell col4'>" + tobeList[i][3] +   "</span>"
+                hhtt = hhtt + "</div>    ";
+            }         
+            for (var i = 0; i < queLists.length; i++) {
+                queList = queList + "<div class='row'>    ";
+                queList = queList + "<span class='cell col1'>" + queLists[i][0] +   "</span>"
+                queList = queList + "<span class='cell col2'>" + queLists[i][1] +   "</span>"
+                queList = queList + "</div>    ";
+            }
+            document.getElementById("table").innerHTML = hhtt;
+            document.getElementById("que").innerHTML = queList;
+        }
+        
+        
+        function getQueLists( boNameList , tobeList , chCnt) {           
+          var rtnList = [];
+          for(var i=0;i<boNameList.length;i++){
+            for(var y=1;y<chCnt+1;y++){
+              if(!isKnow( boNameList[i][0] , y , tobeList )){                         
+                rtnList.push([boNameList[i][0],y]);
+              }
+            }
+          }
+          return rtnList;
+        }
+        
+        function isKnow(boName ,channel , tobeList) {
+          for(var i=0;i<tobeList.length;i++){
+            if(boName == tobeList[i][0] && channel == tobeList[i][1] ){
+              return true;
+            }
+          }
+          return false;
+        }
+
+
+
+        function getTobeList(strList, boNameList, chCnt) {
+            var rtnList = [];
+            for (var i = 0; i < boNameList.length; i++) {
+                for (var y = strList.length-1; y >= 0; y--) {
+                    if (boTrue2(strList[y], boNameList[i])) {
+                        var tmp = getChannel(strList[y], chCnt);
+                        var beTime = getTime(strList[y]);
+                        var afTime = plusTime(beTime, boNameList[i][boNameList[i].length - 1]);
+
+                        for (var t = 0; t < tmp.length; t++) {
+                          if(!isSame(rtnList,boNameList[i][0], tmp[t]) ) {
+                            rtnList.push([boNameList[i][0], tmp[t], beTime,  afTime, new Date("2021-04-12 " + afTime + ":00")]);
+                          }   
+                        }
+                    }
+                }
+            }
+            return rtnList;
+        }
+
+        function isSame(rtnList, boss,channel) {
+          for (var i = 0; i < rtnList.length; i++) {
+            if(rtnList[i][0] == boss && rtnList[i][1] == channel){
+              return true;
+            }
+          }
+          return false;
+        }
+
+        function getChannel(str, chCnt) {
+
+            var str1 = str.split(" ");
+
+            var flag = "N";
+
+            var ch = [];
+
+
+
+            for (var i = 0; i < str1.length; i++) {
+
+                if (str1[i].includes(":")) {
+
+                    continue;
+
+                }
+
+
+
+                for (var y = 1; y < chCnt + 1; y++) {
+
+                    if (str1[i].includes(y)) {
+
+                        ch.push(y + "");
+
+
+
+                    } else {
+
+
+
+                    }
+
+                }
+
+            }
+
+
+
+            return ch;
+
+
+
+        }
+
+
+
+        function date_asc(a, b) {
+
+            var dateA = new Date(a[4]).getTime();
+
+            var dateB = new Date(b[4]).getTime();
+
+            return dateA > dateB ? 1 : -1;
+
+        }
+
+
+
+
+
+        function plusTime(beti, addHour) {
+
+            var str = beti.split(":");
+
+            var hh = Number(str[0]) + Number(addHour);
+
+            var reHh = "00";
+
+            if (hh == 24) {
+
+                reHh = "00";
+
+            } else if (hh > 24) {
+
+                reHh = hh - 24 + "";
+
+            } else {
+
+                reHh = hh + "";
+
+            }
+
+            return reHh + ":" + str[1];
+
+        }
+
+
+
+        function getTime(str) {
+
+
+
+            var ss = str.split(" ");
+
+
+
+            for (var i = 0; i < ss.length; i++) {
+
+
+
+                if (ss[i].includes(":")) {
+
+
+
+                    return ss[i];
+
+
+
+                }
+
+
+
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+        function getStrList(str, boNameList) {
+
+
+
+            var rtnList = [];
+
+
+
+            for (var i = 0; i < str.length; i++) {
+
+
+
+                if (boTrue(str[i], boNameList)) {
+
+
+
+                    rtnList.push(ltrim(str[i]));
+
+                }
+
+
+
+            }
+
+            return rtnList;
+
+        }
+
+
+
+        function boTrue(str1, boNameList) {
+
+
+
+            for (var t = 0; t < boNameList.length; t++) {
+
+
+
+                if (boTrue2(str1, boNameList[t])) {
+
+
+
+                    return true;
+
+
+
+                }
+
+
+
+            }
+
+
+
+        }
+
+
+
+        function boTrue2(str1, boName) {
+
+            for (var y = 0; y < boName.length - 1; y++) {
+
+                if (str1.includes(boName[y])) {
+
+                    if (str1.includes(":")) {
+
+                        if (str1.includes("오늘")) {
+
+                            return false;
+
+                        } else if (str1.includes("어제")) {
+
+                            return false;
+
+                        } else {
+
+                            var tmp = getChannel(str1, 2);
+
+                            if (tmp.length > 0) { return true; }
+
+                            else { return false; }
+
+                        }
+
+                    } else {
+
+                        return false;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+        function ltrim(str) { return str.replace(/^\s+/, " "); }
+
+
+
+        function rtrim(str) { return str.replace(/\s+$/, " "); }
+
+
+
+
+
+    </script>
+
+
+
+
+
+    <textarea id="ta1" rows="10" cols="100">
+
+
+
+        펨바1 14:48
+
+        와매선/35  오늘 오후 2:57
+
+        혼다2 14:57
+
+        와매선/35  오늘 오후 3:06
+
+        
+
+        와매선/35  오늘 오후 3:13
+
+        
+
+        와매선/35  오늘 오후 3:29
+
+        뱀1 15:29
+
+        와매선/35  오늘 오후 3:43
+
+        그레1 15:43
+
+        와매선/35  오늘 오후 3:57
+
+        욜로2 15:57
+
+        와매선/35  오늘 오후 4:23
+
+        하슈1 16:23
+
+        와매선/35  오늘 오후 4:51
+
+        이제라2 16:51
+
+        와매선/35  오늘 오후 5:19
+
+        라그락2 17:19
+
+        루리영  오늘 오후 5:50
+
+        명계1 17:45
+
+        와매선/35  오늘 오후 6:19
+
+        욜로1 18:19
+
+        와매선/35  오늘 오후 6:39
+
+        명계2 18:39
+
+        이하여백 / 54  오늘 오후 6:57
+
+        다음보스 젠 예상시간
+
+        
+
+        루리영  오늘 오후 8:52
+
+        아스 1채 20:52
+
+        MEE6
+
+        봇
+
+          오늘 오후 8:52
+
+        GG @루리영, you just advanced to level 5!
+
+        혜빈29  오늘 오후 8:57
+
+        마누글1 20:57
+
+        MEE6
+
+        봇
+
+          오늘 오후 8:57
+
+        GG @혜빈29, you just advanced to level 5!
+
+        루리영  오늘 오후 8:58
+
+        아스2채 21:10 예상
+
+        루리영  오늘 오후 9:17
+
+        공성추 1채 21:16
+
+        이하여백 / 54  오늘 오후 10:37
+
+        라그락 1 22:36
+
+        
+
+        축신 2 23:19
+
+        혼다 1 23:24
+
+        축신1 23:31
+
+        그레 2 23:38
+
+        
+
+        뱀 2 23:46
+
+    </textarea>
+    <p><button name="bu1" onclick="run1()">click</button><a>    * 같은채널같은보스가 써있으면 밑에 써있는건으로 사용함(디코에서 싹 드래그로 긁어서 카피후 붙여넣기)</a></p>
+    <hr>
+
+    <div id = "paren">
+      <div id="table"></div>
+            <div id="verti1"></div>
+      <div id="que"></div>
+    </div>
+
+ 
+
+
+
+</body>
+
+
+
+</html>
