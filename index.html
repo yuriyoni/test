@@ -32,10 +32,11 @@
         var queLists = [];
         
         function run1() {
-            var str = document.getElementById("ta1").value;
-            var arr = str.split('\n');
+            
+            var str = document.getElementById("ta1").value;            
+            var arr = str.split('\n');            
             var strList = getStrList(arr, bb);
-
+            
             var hhtt = "<div class='row'><span class='cell col1'>보스</span><span class='cell col2'>채널</span><span class='cell col3'>잡은시간</span><span class='cell col4'>예상시간</span></div>";            
             var queList = "<div class='row'><span class='cell col1'>보스(시간모름)</span><span class='cell col2'>채널</span></div>";            
             tobeList = getTobeList(strList, bb, chCnt);
@@ -116,61 +117,28 @@
         }
 
         function getChannel(str, chCnt) {
-
             var str1 = str.split(" ");
-
             var flag = "N";
-
             var ch = [];
-
-
-
             for (var i = 0; i < str1.length; i++) {
-
-                if (str1[i].includes(":")) {
-
+                if (str1[i].indexOf(":") >= 0) {
                     continue;
-
                 }
-
-
-
                 for (var y = 1; y < chCnt + 1; y++) {
-
-                    if (str1[i].includes(y)) {
-
+                    if (str1[i].indexOf(y) >= 0) {
                         ch.push(y + "");
-
-
-
-                    } else {
-
-
-
                     }
-
                 }
-
             }
-
-
-
             return ch;
-
-
-
         }
 
 
 
         function date_asc(a, b) {
-
             var dateA = new Date(a[4]).getTime();
-
             var dateB = new Date(b[4]).getTime();
-
             return dateA > dateB ? 1 : -1;
-
         }
 
 
@@ -178,178 +146,80 @@
 
 
         function plusTime(beti, addHour) {
-
             var str = beti.split(":");
-
             var hh = Number(str[0]) + Number(addHour);
-
             var reHh = "00";
-
             if (hh == 24) {
-
                 reHh = "00";
-
             } else if (hh > 24) {
-
                 reHh = hh - 24 + "";
-
             } else {
-
                 reHh = hh + "";
-
             }
-
             return reHh + ":" + str[1];
-
         }
 
 
 
         function getTime(str) {
-
-
-
             var ss = str.split(" ");
-
-
-
             for (var i = 0; i < ss.length; i++) {
-
-
-
-                if (ss[i].includes(":")) {
-
-
-
+                if (ss[i].indexOf(":") >= 0) {                    
                     return ss[i];
-
-
-
                 }
-
-
-
             }
-
-
-
         }
 
-
-
-
-
-
-
         function getStrList(str, boNameList) {
-
-
-
+            
             var rtnList = [];
-
-
-
             for (var i = 0; i < str.length; i++) {
-
-
-
                 if (boTrue(str[i], boNameList)) {
-
-
-
                     rtnList.push(ltrim(str[i]));
-
                 }
-
-
-
             }
-
+            
             return rtnList;
-
         }
 
 
 
         function boTrue(str1, boNameList) {
-
-
-
+            
             for (var t = 0; t < boNameList.length; t++) {
-
-
-
                 if (boTrue2(str1, boNameList[t])) {
-
-
-
                     return true;
-
-
-
                 }
-
-
-
             }
-
-
-
         }
 
 
 
         function boTrue2(str1, boName) {
-
-            for (var y = 0; y < boName.length - 1; y++) {
-
-                if (str1.includes(boName[y])) {
-
-                    if (str1.includes(":")) {
-
-                        if (str1.includes("오늘")) {
-
+            
+            for (var y = 0; y < boName.length - 1; y++) {                
+                //if (str1.includes(boName[y])) {                    
+                if (str1.indexOf(boName[y]) >= 0  ) {                               
+                    if (str1.indexOf(":") >= 0) {
+                        if (str1.indexOf("오늘") >= 0) {
                             return false;
-
-                        } else if (str1.includes("어제")) {
-
+                        } else if (str1.indexOf("어제") >= 0) {
                             return false;
-
-                        } else {
-
+                        } else {                            
                             var tmp = getChannel(str1, 2);
-
                             if (tmp.length > 0) { return true; }
-
                             else { return false; }
-
                         }
-
                     } else {
-
                         return false;
-
                     }
-
                 }
-
             }
-
+            
         }
 
-
-
-
-
         function ltrim(str) { return str.replace(/^\s+/, " "); }
-
-
-
         function rtrim(str) { return str.replace(/\s+$/, " "); }
-
-
-
-
 
     </script>
 
